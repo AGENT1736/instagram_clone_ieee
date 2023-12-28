@@ -47,12 +47,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-        home:login_page(),//TODO change it to login
+      /* this is used to check authentication and if it is not null it goes to the home page immediately
+       if it is null it goes to the login page */
+        home:FirebaseAuth.instance.currentUser==null? login_page() : home_page(),//TODO change it to login
         title: "The page",
         debugShowCheckedModeBanner: false,
 
         routes: {
-
           "/register":(context) => register_page(),
           "/login":(context)=> login_page(),
           "/homePage":(context)=> home_page(),
